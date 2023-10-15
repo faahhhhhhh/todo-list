@@ -1,0 +1,64 @@
+<style>
+  .container {
+    display: grid;
+    justify-items: center;
+  }
+
+  button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 10px;
+  }
+
+  .delete__button {
+    background-color: #ae3c3c;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 10px;
+  }
+
+  input {
+    border-radius: 5px;
+    padding: 5px 30px 5px 5px;
+  }
+</style>
+<!-- Display the list of tasks -->
+<!-- <ul>
+    <li *ngFor="let task of tasks">
+      {{ task.description }}
+      <button (click)="editTask(task)">Edit</button>
+      <button (click)="deleteTask(task)">Delete</button>
+    </li>
+  </ul> -->
+<div class="container">
+  <form *ngFor="let task of tasks">
+    <input type="checkbox" />
+    <label> {{ task.description }}</label
+    ><br />
+    <button (click)="editTask(task)">Edit</button>
+    <button (click)="deleteTask(task)" class="delete__button">Delete</button>
+  </form>
+  <!-- Form to add or edit tasks -->
+  <form (submit)="saveTask()">
+    <input
+      [(ngModel)]="newTaskDescription"
+      name="newTask"
+      placeholder="New Task"
+      required
+    />
+    <button type="submit">{{ editingTask ? "Update" : "Add" }}</button>
+  </form>
+</div>
